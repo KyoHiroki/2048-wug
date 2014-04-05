@@ -124,10 +124,25 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
   this.bestContainer.textContent = bestScore;
 };
 
-HTMLActuator.prototype.message = function (won, levelScore) {
-  var level = function (m) { var r = 0; while (m > 1) r++, m >>= 1; return r; }
+HTMLActuator.prototype.message = function (won, lvScore) {
+  var wugMessages = new Array(12);
+  wugMessages[0]="真夢";
+  wugMessages[1]="愛理";
+  wugMessages[2]="実波";
+  wugMessages[3]="佳乃";
+  wugMessages[4]="菜々美";
+  wugMessages[5]="夏夜";
+  wugMessages[6]="未夕";
+  wugMessages[7]="志保";
+  wugMessages[8]="麻衣";
+  wugMessages[9]="愛";
+  wugMessages[10]="菜野花";
+  wugMessages[11]="早坂";
+  
+  var calcLevel = function (m) { var r = 0; while (m > 1) r++, m >>= 1; return r; }
+  var level   = calcLevel(lvScore);
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : level(levelScore);
+  var message = won ? "You win!" : level > wugMessages.length ? "Wake Up, Girls!" : wugMessages[level-1];
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
