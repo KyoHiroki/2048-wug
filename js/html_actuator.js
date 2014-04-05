@@ -1,4 +1,4 @@
-function HTMLActuator() {
+﻿function HTMLActuator() {
   this.tileContainer    = document.querySelector(".tile-container");
   this.scoreContainer   = document.querySelector(".score-container");
   this.bestContainer    = document.querySelector(".best-container");
@@ -26,9 +26,9 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
     if (metadata.terminated) {
       if (metadata.over) {
-        self.message(false); // You lose
+        self.message(false, metadata.lvScore); // You lose
       } else if (metadata.won) {
-        self.message(true); // You win!
+        self.message(true, metadata.lvScore); // You win!
       }
     }
 
@@ -124,9 +124,10 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
   this.bestContainer.textContent = bestScore;
 };
 
-HTMLActuator.prototype.message = function (won) {
+HTMLActuator.prototype.message = function (won, levelScore) {
+  var level = function (m) { var r = 0; while (m > 1) r++, m >>= 1; return r; }
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : "Game over!";
+  var message = won ? "You win!" : level(levelScore);
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;

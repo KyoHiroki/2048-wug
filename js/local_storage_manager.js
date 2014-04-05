@@ -1,4 +1,4 @@
-window.fakeStorage = {
+﻿window.fakeStorage = {
   _data: {},
 
   setItem: function (id, val) {

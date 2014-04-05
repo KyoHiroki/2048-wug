@@ -1,4 +1,4 @@
-function GameManager(size, InputManager, Actuator, StorageManager) {
+﻿function GameManager(size, InputManager, Actuator, StorageManager) {
   this.size           = size; // Size of the grid
   this.inputManager   = new InputManager;
   this.storageManager = new StorageManager;
@@ -44,12 +44,14 @@ GameManager.prototype.setup = function () {
     this.grid        = new Grid(previousState.grid.size,
                                 previousState.grid.cells); // Reload grid
     this.score       = previousState.score;
+    this.lvScore     = previousState.lvScore;
     this.over        = previousState.over;
     this.won         = previousState.won;
     this.keepPlaying = previousState.keepPlaying;
   } else {
     this.grid        = new Grid(this.size);
     this.score       = 0;
+    this.lvScore     = 2;
     this.over        = false;
     this.won         = false;
     this.keepPlaying = false;
@@ -94,6 +96,7 @@ GameManager.prototype.actuate = function () {
 
   this.actuator.actuate(this.grid, {
     score:      this.score,
+    lvScore:    this.lvScore,
     over:       this.over,
     won:        this.won,
     bestScore:  this.storageManager.getBestScore(),
@@ -107,6 +110,7 @@ GameManager.prototype.serialize = function () {
   return {
     grid:        this.grid.serialize(),
     score:       this.score,
+    lvScore:     this.lvScore,
     over:        this.over,
     won:         this.won,
     keepPlaying: this.keepPlaying
@@ -169,6 +173,10 @@ GameManager.prototype.move = function (direction) {
 
           // Update the score
           self.score += merged.value;
+          
+          // Update the lvScore
+          if(merged.value > self.lvScore)
+          	self.lvScore = merged.value;
 
           // The mighty 2048 tile
           if (merged.value === 2048) self.won = true;
