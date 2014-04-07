@@ -1,32 +1,21 @@
-# 2048
-A small clone of [1024](https://play.google.com/store/apps/details?id=com.veewo.a1024), based on [Saming's 2048](http://saming.fr/p/2048/) (also a clone).
+﻿# 2048 WUG ver
+基于[Gabriele Cirulli的2048](https://github.com/gabrielecirulli/2048)，一个2048的Wake Up, Girls!版本，添加了图片、修改了Game Over文字并加入语音。
 
-Made just for fun. [Play it here!](http://gabrielecirulli.github.io/2048/)
+在制作过程中参考了[2048朝代版](http://oprilzeng.github.io/2048/)和[井口 2048](http://marumichannel.github.io/2048/)的部分代码。
 
-### Contributions
-
- - [TimPetricola](https://github.com/TimPetricola) added best score storage
- - [chrisprice](https://github.com/chrisprice) added custom code for swipe handling on mobile
- - [elektryk](https://github.com/elektryk) made swipes work on Windows Phone
- - [mgarciaisaia](https://github.com/mgarciaisaia) addes support for Android 2.3
-
-Many thanks to [rayhaanj](https://github.com/rayhaanj), [Mechazawa](https://github.com/Mechazawa), [grant](https://github.com/grant), [remram44](https://github.com/remram44) and [ghoullier](https://github.com/ghoullier) for the many other good contributions.
+Made just for fun and LOVE. [Play it here!](http://kyohiroki.github.io/2048-wug/)
 
 ### Screenshot
 
 <p align="center">
-  <img src="http://pictures.gabrielecirulli.com/2048-20140309-234100.png" alt="Screenshot"/>
+  <img src="http://kyohiroki.github.io/2048-wug/i/screenshot.png" alt="Screenshot"/>
 </p>
 
-That screenshot is fake, by the way. I never reached 2048 :smile:
-
 ## Contributing
-Changes and improvements are more than welcome! Feel free to fork and open a pull request. Please make your changes in a specific branch and request to pull into `master`! If you can, please make sure the game fully works before sending the PR, as that will help speed up the process.
-
-You can find the same information in the [contributing guide.](https://github.com/gabrielecirulli/2048/blob/master/CONTRIBUTING.md)
+欢迎提供各种图片和语音素材，如有其他意见和建议，也欢迎通过twitter[联系我](http://twitter.com/KyoHiroki)
 
 ## License
-2048 is licensed under the [MIT license.](https://github.com/gabrielecirulli/2048/blob/master/LICENSE.txt)
+2048 WUG ver is licensed under the [MIT license.](https://github.com/KyoHiroki/2048-wug/blob/master/LICENSE.txt)
 
 ## Donations
-I made this in my spare time, and it's hosted on GitHub (which means I don't have any hosting costs), but if you enjoyed the game and feel like buying me coffee, you can donate at my BTC address: `1Ec6onfsQmoP9kkL3zkpB6c5sA4PVcXU2i`. Thank you very much!
+制作此游戏纯属本人心血来潮，无需任何捐赠，若你喜欢本游戏，请为小天使们贡献更多的<strong>爱</strong>吧。
