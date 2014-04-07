@@ -125,25 +125,28 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 };
 
 HTMLActuator.prototype.message = function (won, lvScore) {
-  var wugMessages = new Array(12);
-  wugMessages[0]={ "text" : "真夢:「諦めじゃダメです」", "style" : {"fontSize" : "38px", "lineHeight" : "38px", "height" : "38px"}}; // M 40:52
-  wugMessages[1]={ "text" : "藍里:「私はもっと頑張らないとなー」", "style" : {"fontSize" : "28px", "lineHeight" : "28px", "height" : "28px"}}; // 06 11:30
-  wugMessages[2]={ "text" : "実波:「うんめえ～にゃ～」", "style" : {"fontSize" : "36px", "lineHeight" : "36px", "height" : "36px"}}; // 03 08:32
-  wugMessages[3]={ "text" : "佳乃:「自覚持っとうよっ」", "style" : {"fontSize" : "36px", "lineHeight" : "36px", "height" : "36px"}}; // 06 07:59
-  wugMessages[4]={ "text" : "菜々美:「私も中途半端をやめる！」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}}; // 09 20:18|06 09:31
-  wugMessages[5]={ "text" : "夏夜:「あー惜しい、次は行ける！」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}}; // 07 12:02
-  wugMessages[6]={ "text" : "未夕:「みゅーのウイルスが激烈蔓延中だぁーっ！」", "style" : {"fontSize" : "36px", "lineHeight" : "54px", "height" : "108px"}}; // 01 16:27
-  wugMessages[7]={ "text" : "志保:「良くもう一度戻ってくる気になったわねっ！」", "style" : {"fontSize" : "36px", "lineHeight" : "54px", "height" : "108px"}}; // 05 21:53
-  wugMessages[8]={ "text" : "麻衣:「感心してる場合？」", "style" : {"fontSize" : "36px", "lineHeight" : "36px", "height" : "36px"}}; // 08 05:44
-  wugMessages[9]={ "text" : "愛:「また来てね、待ってるから♥」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}}; // 05 21:20
-  wugMessages[10]={ "text" : "菜野花:「新曲の事聞いてる？」", "style" : {"fontSize" : "32px", "lineHeight" : "32px", "height" : "32px"}}; // 10 22:12|11 01:50|11 07:51
-  wugMessages[11]={ "text" : "早坂:「練習の成果見せてもらうよ」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}}; // 11 12:16
+  var wugMessages  = new Array(12);
+  wugMessages[0]   = { "text" : "真夢:「諦めじゃダメです」", "style" : {"fontSize" : "38px", "lineHeight" : "38px", "height" : "38px"}, "soundId" : "mayu"}; // M 40:52
+  wugMessages[1]   = { "text" : "藍里:「私はもっと頑張らないとなー」", "style" : {"fontSize" : "28px", "lineHeight" : "28px", "height" : "28px"}, "soundId" : "airi"}; // 06 11:30
+  wugMessages[2]   = { "text" : "実波:「うんめえ～にゃ～」", "style" : {"fontSize" : "36px", "lineHeight" : "36px", "height" : "36px"}, "soundId" : "minami"}; // 03 08:32
+  wugMessages[3]   = { "text" : "佳乃:「自覚持っとうよっ」", "style" : {"fontSize" : "36px", "lineHeight" : "36px", "height" : "36px"}, "soundId" : "yoshino"}; // 06 07:59
+  wugMessages[4]   = { "text" : "菜々美:「私も中途半端をやめる！」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}, "soundId" : "nanami"}; // 09 20:18
+  wugMessages[5]   = { "text" : "夏夜:「あー惜しい、次は行ける！」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}, "soundId" : "kaya"}; // 07 12:02
+  wugMessages[6]   = { "text" : "未夕:「みゅーのウイルスが激烈蔓延中だぁーっ！」", "style" : {"fontSize" : "36px", "lineHeight" : "54px", "height" : "108px"}, "soundId" : "miyu"}; // 01 16:27
+  wugMessages[7]   = { "text" : "志保:「良くもう一度戻ってくる気になったわねっ！」", "style" : {"fontSize" : "36px", "lineHeight" : "54px", "height" : "108px"}, "soundId" : "shiho"}; // 05 21:53
+  wugMessages[8]   = { "text" : "麻衣:「感心してる場合？」", "style" : {"fontSize" : "36px", "lineHeight" : "36px", "height" : "36px"}, "soundId" : "mai"}; // 08 05:44
+  wugMessages[9]   = { "text" : "愛:「また来てね、待ってるから♥」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}, "soundId" : "megumi"}; // 05 21:20
+  wugMessages[10]  = { "text" : "菜野花:「新曲の事聞いてる？」", "style" : {"fontSize" : "32px", "lineHeight" : "32px", "height" : "32px"}, "soundId" : "nanoka"}; // 11 07:51
+  wugMessages[11]  = { "text" : "早坂:「練習の成果見せてもらうよ」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}, "soundId" : "hayasaka"}; // 11 12:16
+  var wonMessage   = { "text" : "白木:「勝ったのはあいつらだ。」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}, "soundId" : "shiraki"};
+  var superMseeage = { "text" : "Wake Up, Girls!", "soundId" : "wakeupgirls"};
   
   var calcLevel = function (n) { var r = 0; while (n > 1) r++, n >>= 1; return r; }
   var level   = calcLevel(lvScore);
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "You win!" : level > wugMessages.length ? "Wake Up, Girls!" : wugMessages[level-1].text;
-  var style   = won ? undefined : level > wugMessages.length ? undefined : wugMessages[level-1].style;
+  var message = won ? wonMessage.text : level > wugMessages.length ? superMseeage.text : wugMessages[level-1].text;
+  var style   = won ? wonMessage.style : level > wugMessages.length ? superMseeage.style : wugMessages[level-1].style;
+  var soundId = won ? wonMessage.soundId : level > wugMessages.length ? superMseeage.soundId : wugMessages[level-1].soundId;
 
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
@@ -151,8 +154,9 @@ HTMLActuator.prototype.message = function (won, lvScore) {
   	  for(var property in style) {
   	  	  this.messageContainer.getElementsByTagName("p")[0].style[property] = style[property];
   	  }
-  } else {
-  	  this.messageContainer.getElementsByTagName("p")[0].style.cssText = "";
+  }
+  if(soundId) {
+  	  window.setTimeout(function() {document.getElementById(soundId).play();}, 1000);
   }
 };
 
@@ -160,4 +164,5 @@ HTMLActuator.prototype.clearMessage = function () {
   // IE only takes one value to remove at a time.
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
+  this.messageContainer.getElementsByTagName("p")[0].removeAttribute("style");
 };

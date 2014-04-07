@@ -387,7 +387,7 @@ hr {
         font-size: 15px; } }
   .tile.tile-super .tile-inner {
     background-color: #3c3a32;
-  	background-image: url('../i/2048.png');
+  	background-image: url('../i/super.png');
     font-size: 30px; }
     @media screen and (max-width: 520px) {
       .tile.tile-super .tile-inner {
