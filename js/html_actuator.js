@@ -159,7 +159,7 @@ HTMLActuator.prototype.message = function (won, lvScore) {
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
   this.clearContainer(this.sharingContainer);
   this.sharingContainer.appendChild(this.scoreTweetButton());
-  twttr.widgets.load();
+  if(twttr)twttr.widgets.load();
   if(style) {
   	  for(var property in style) {
   	  	  this.messageContainer.getElementsByTagName("p")[0].style[property] = style[property];
