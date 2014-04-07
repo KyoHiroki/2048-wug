@@ -3,6 +3,7 @@
   this.scoreContainer   = document.querySelector(".score-container");
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
+  this.sharingContainer = document.querySelector(".score-sharing");
 
   this.score = 0;
 }
@@ -37,6 +38,9 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
 // Continues the game (both restart and keep playing)
 HTMLActuator.prototype.continueGame = function () {
+  if (typeof ga !== "undefined") {
+    ga("send", "event", "game", "restart");
+  }
   this.clearMessage();
 };
 
@@ -147,9 +151,15 @@ HTMLActuator.prototype.message = function (won, lvScore) {
   var message = won ? wonMessage.text : level > wugMessages.length ? superMseeage.text : wugMessages[level-1].text;
   var style   = won ? wonMessage.style : level > wugMessages.length ? superMseeage.style : wugMessages[level-1].style;
   var soundId = won ? wonMessage.soundId : level > wugMessages.length ? superMseeage.soundId : wugMessages[level-1].soundId;
-
+  if (typeof ga !== "undefined") {
+    ga("send", "event", "game", "end", type, this.score);
+  }
+  
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
+  this.clearContainer(this.sharingContainer);
+  this.sharingContainer.appendChild(this.scoreTweetButton());
+  twttr.widgets.load();
   if(style) {
   	  for(var property in style) {
   	  	  this.messageContainer.getElementsByTagName("p")[0].style[property] = style[property];
@@ -165,4 +175,16 @@ HTMLActuator.prototype.clearMessage = function () {
   this.messageContainer.classList.remove("game-won");
   this.messageContainer.classList.remove("game-over");
   this.messageContainer.getElementsByTagName("p")[0].removeAttribute("style");
+};
+
+HTMLActuator.prototype.scoreTweetButton = function () {
+  var tweet = document.createElement("a");
+  tweet.classList.add("twitter-share-button");
+  tweet.setAttribute("href", "https://twitter.com/share");
+  tweet.setAttribute("data-via", "KyoHiroki");
+  tweet.setAttribute("data-url", "http://kyohiroki.github.io/2048-wug/");
+  tweet.setAttribute("data-text", this.messageContainer.getElementsByTagName("p")[0].textContent);
+  tweet.textContent = "Tweet";
+
+  return tweet;
 };
