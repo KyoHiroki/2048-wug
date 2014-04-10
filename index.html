@@ -152,9 +152,11 @@
   	var preloadImages = [
   		"i/2.png","i/4.png","i/8.png","i/16.png","i/32.png","i/64.png","i/128.png","i/256.png","i/512.png","i/1024.png","i/2048.png","i/super.png"
   	];
+  	var imageObjs = [];
   	for(var i = 0; i < preloadImages.length; i++) {
   		var imageObj = new Image();
   		imageObj.src = preloadImages[i];
+  		imageObjs.push(imageObj);
   	}
   </script>
   <script src="js/bind_polyfill.js"></script>
