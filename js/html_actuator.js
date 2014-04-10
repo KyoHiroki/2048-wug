@@ -145,7 +145,7 @@ HTMLActuator.prototype.message = function (won, lvScore) {
   var wonMessage   = { "text" : "白木:「勝ったのはあいつらだ。」", "style" : {"fontSize" : "30px", "lineHeight" : "30px", "height" : "30px"}, "soundId" : "shiraki"};
   var superMseeage = { "text" : "Wake Up, Girls!", "soundId" : "wakeupgirls"};
   
-  var calcLevel = function (n) { var r = 0; while (n > 1) r++, n >>= 1; return r; }
+  var calcLevel = function (n) { var r = 0; while (n > 1) r++, n >>= 1; return r; };
   var level   = calcLevel(lvScore);
   var type    = won ? "game-won" : "game-over";
   var message = won ? wonMessage.text : level > wugMessages.length ? superMseeage.text : wugMessages[level-1].text;
