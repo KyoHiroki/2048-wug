@@ -9,6 +9,7 @@
   this.inputManager.on("move", this.move.bind(this));
   this.inputManager.on("restart", this.restart.bind(this));
   this.inputManager.on("keepPlaying", this.keepPlaying.bind(this));
+  this.inputManager.on("showLvMessage", this.showLvMessage.bind(this));
 
   this.setup();
 }
@@ -24,6 +25,11 @@ GameManager.prototype.restart = function () {
 GameManager.prototype.keepPlaying = function () {
   this.keepPlaying = true;
   this.actuator.continueGame(); // Clear the game won/lost message
+};
+
+// show level message 
+GameManager.prototype.showLvMessage = function(target) {
+	this.actuator.message(false, target.getAttribute("data-level-score"));
 };
 
 // Return true if the game is lost, or has won and the user hasn't kept playing
@@ -86,6 +92,9 @@ GameManager.prototype.actuate = function () {
   if (this.storageManager.getBestScore() < this.score) {
     this.storageManager.setBestScore(this.score);
   }
+  if (this.storageManager.getBestLvScore() < this.lvScore) {
+	  this.storageManager.setBestLvScore(this.lvScore);
+  }
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
@@ -95,12 +104,13 @@ GameManager.prototype.actuate = function () {
   }
 
   this.actuator.actuate(this.grid, {
-    score:      this.score,
-    lvScore:    this.lvScore,
-    over:       this.over,
-    won:        this.won,
-    bestScore:  this.storageManager.getBestScore(),
-    terminated: this.isGameTerminated()
+    score:       this.score,
+    lvScore:     this.lvScore,
+    over:        this.over,
+    won:         this.won,
+    bestScore:   this.storageManager.getBestScore(),
+    bestLvScore: this.storageManager.getBestLvScore(),
+    terminated:  this.isGameTerminated()
   });
 
 };
