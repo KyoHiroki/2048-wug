@@ -23,6 +23,7 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
 
     self.updateScore(metadata.score);
     self.updateBestScore(metadata.bestScore);
+    self.updateBestLvScore(metadata.bestLvScore);
 
     if (metadata.terminated) {
       if (metadata.over) {
@@ -122,6 +123,37 @@ HTMLActuator.prototype.updateScore = function (score) {
 
 HTMLActuator.prototype.updateBestScore = function (bestScore) {
   this.bestContainer.textContent = bestScore;
+};
+
+HTMLActuator.prototype.updateBestLvScore = function (bestLvScore) {
+	var activeLevelObjs = document.querySelectorAll(".active-level");
+	for( var i = 0; i < activeLevelObjs.length; ++i) {
+		var activeLevelObj = activeLevelObjs[i];
+		var levelScore = activeLevelObj.getAttribute("data-level-score");
+		if (parseInt(levelScore) > parseInt(bestLvScore)) {
+			if (activeLevelObj.style.display != "none") {
+				activeLevelObj.style.display = "none";
+			}
+		} else {
+			if (activeLevelObj.style.display != "inline") {
+				activeLevelObj.style.display = "inline";
+			}
+		}
+	}
+	var inactiveLevelObjs = document.querySelectorAll(".inactive-level");
+	for ( var i = 0; i < inactiveLevelObjs.length; ++i) {
+		var inactiveLevelObj = inactiveLevelObjs[i];
+		var levelScore = inactiveLevelObj.getAttribute("data-level-score");
+		if (parseInt(levelScore) > parseInt(bestLvScore)) {
+			if (inactiveLevelObj.style.display != "inline") {
+				inactiveLevelObj.style.display = "inline";
+			}
+		} else {
+			if (inactiveLevelObj.style.display != "none") {
+				inactiveLevelObj.style.display = "none";
+			}
+		}
+	}
 };
 
 HTMLActuator.prototype.message = function (won, lvScore) {

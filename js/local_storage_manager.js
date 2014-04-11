@@ -20,6 +20,7 @@
 
 function LocalStorageManager() {
   this.bestScoreKey     = "bestScore";
+  this.bestLvScoreKey   = "bestLvScore";
   this.gameStateKey     = "gameState";
 
   var supported = this.localStorageSupported();
@@ -46,6 +47,15 @@ LocalStorageManager.prototype.getBestScore = function () {
 
 LocalStorageManager.prototype.setBestScore = function (score) {
   this.storage.setItem(this.bestScoreKey, score);
+};
+
+//Best level score getters/setters
+LocalStorageManager.prototype.getBestLvScore = function () {
+  return this.storage.getItem(this.bestLvScoreKey) || 2;
+};
+
+LocalStorageManager.prototype.setBestLvScore = function (lvScore) {
+  this.storage.setItem(this.bestLvScoreKey, lvScore);
 };
 
 // Game state getters/setters and clearing
